@@ -2051,189 +2051,241 @@ input:checked + .slider ion-icon{
 
 }
 
+/* --- ARREGLO DE BARRA DE SCROLL --- */
 
-@media print 
-{
+/* 1. Forzar que aparezca la barra vertical si el contenido es largo */
+html {
+  overflow-y: scroll; 
+}
+
+/* 2. Asegurar que el body permita scroll */
+body {
+  overflow-y: auto;
+  scrollbar-color: var(--orange-yellow-crayola) var(--onyx); /* Firefox */
+}
+
+/* 3. Estilos específicos para Chrome/Edge/Safari (Webkit) */
+::-webkit-scrollbar {
+  width: 10px; /* Un poco más ancha para verla bien */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1f; /* Gris oscuro (Onyx) manual para asegurar visibilidad */
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola); /* Tu color amarillo/dorado */
+  border-radius: 5px;
+  border: 2px solid #1e1e1f; /* Borde para que destaque */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-gradient-yellow);
+}
+
+@media print {
+  /* 1. CONFIGURACIÓN DE PÁGINA: MÁRGENES MÍNIMOS */
   @page {
-    size: A3;
-  }
-  /**
-   * REUSED STYLE
-   */
-
-  .sidebar, article { width: auto; }
-
-  /**
-   * Dark mode switcher
-   */
-  .theme-switch-wrapper { display: none; }
-
-  /**
-   * MAIN
-  */
-
-  main {
-    width:95%;
-    margin-inline: auto;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 15px;
+    size: A4;
+    margin: 1cm; /* Margen estrecho para aprovechar la hoja */
   }
 
-  .main-content {
-    width: 70%;
-    min-width: 70%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
+  /* 2. LIMPIEZA TOTAL DE FONDOS (Nuke option) */
+  *, *::before, *::after {
+    background: transparent !important; /* Quita todos los fondos de golpe */
+    color: #000 !important;             /* Todo texto a negro puro */
+    box-shadow: none !important;        /* Fuera sombras */
+    text-shadow: none !important;       /* Fuera sombras de texto */
+    border-radius: 0 !important;        /* Fuera bordes redondeados */
   }
 
-  .service-title, #ytvideo {
-    display: none;
-  }
-
-  article {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .container {
-    padding-top: 8mm;
-  }
-
-  .main-content article.resume{
-    page-break-after: always;
-  }
-
-  .main-content article.publications {
-    width: 140% ; /* ensancha */
-    margin-left: -41%;
-    /* margin-top: 100mm; */
-  }
-
-  .main-content article.about {
-      padding-bottom: 0;
-  };
-
-  .article-title {
-    font-size: var(--fs-3);
-  }
-
-  /**
-   * SIDEBAR
-   */
-
-  .sidebar {
-    position: sticky;
-    max-height: max-content;
-    height: 100%;
+  html, body {
+    background-color: #ffffff !important;
+    height: auto;
     width: 100%;
-    margin-bottom: 0;
-    padding:20px;
-    z-index: 1;
+    overflow: visible;
   }
 
-  .sidebar-info { 
-    flex-direction: column;
-    gap:15px;
-   }
-
-  .avatar-box img { 
-    width: 100%; 
-    border-radius: 15px;
+  /* Eliminar elementos decorativos que causan parches oscuros */
+  .content-card::before,
+  .service-item::before,
+  .sidebar::before,
+  .project-item > a::before,
+  .blog-post-item > a::before,
+  .info_more-btn::before,
+  .form-btn::before {
+    display: none !important;
   }
 
-  .info-content { 
+  /* 3. COMPACTAR TEXTO Y ESPACIOS */
+  body {
+    font-size: 10pt !important;   /* Letra más pequeña estándar de impresión */
+    line-height: 1.3 !important;  /* Líneas más juntas */
+  }
+
+  h1, h2, h3, h4 {
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+    color: #000 !important;
+    font-weight: bold !important;
+  }
+
+  p, li, span, time {
+    margin-bottom: 5px !important;
+  }
+
+  /* 4. REESTRUCTURACIÓN DEL LAYOUT (VERTICAL Y LIMPIO) */
+  main {
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* La Sidebar (encabezado en papel) */
+  .sidebar {
+    position: relative;
+    width: 100% !important;
+    max-height: none !important;
+    margin-bottom: 15px !important;
+    padding-bottom: 15px !important;
+    border: none !important;
+    border-bottom: 2px solid #000 !important; /* Línea divisoria simple */
+    display: block !important;
+  }
+
+  .sidebar-info {
+    flex-direction: row !important; /* Foto y nombre lado a lado para ahorrar alto */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .avatar-box {
+    width: 80px !important;  /* Avatar más pequeño */
+    height: 80px !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .avatar-box img {
     width: 100%;
   }
 
   .info-content .name {
-    width: 100%;
-    text-align: center;
-    font-size: var(--fs-2);
+    font-size: 16pt !important;
+    margin-bottom: 5px !important;
+    text-align: left !important;
   }
 
-  .info-content .title { 
-    width: 100%;
-    text-align: center;
-    font-size: var(--fs-8);
-    padding: 5px 0;
+  .info-content .title {
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    font-weight: bold;
   }
 
-  .separator {
-    margin: 25px 0;
+  /* Contactos en 3 columnas para ahorrar espacio vertical */
+  .contacts-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
   }
 
   .contact-item {
-    display: flex;
-    gap: 7px;
-  }
-
-  .contact-title {
-    display: none;
-  }
-  .contact-info {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .info_more-btn { display: none; }
-
-  .sidebar-info_more {
-    opacity: 1;
-    visibility: visible;
+    padding: 0 !important;
   }
 
   .icon-box {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    font-size: 15px;
+    display: none !important; /* Ocultamos iconos para ganar espacio y limpieza */
   }
 
-  .contacts-list { 
-    grid-template-columns: 1fr; 
-    gap: 15px;
-  }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs-7: 12px;
-    font-weight: var(--fw-300);
-  }
-
-  .social-list { justify-content: center; }
-
-  .cv-download {
-    display: none;
-  }
-
-  .sidebar,
+  /* 5. ARTÍCULOS Y CONTENIDO */
   article {
-    box-shadow: none;
+    display: block !important;
+    padding: 0 !important;
+    margin-bottom: 20px !important;
+    border: none !important;
   }
 
-  /**
-  * NAVBAR
-  */
-  .navbar {
-    display: none;
+  .article-title {
+    font-size: 14pt !important;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Quitar la barra decorativa debajo del título */
+  .article-title::after {
+    display: none !important;
   }
 
-  article.portfolio, article {
-    display: none;
+  /* Timeline (Experiencia/Educación) muy compacto */
+  .timeline {
+    margin-left: 5px !important;
+    margin-bottom: 15px !important;
   }
 
-  article.about, article.resume, article.publications {
-    display: block;
+  .timeline-list {
+    margin-left: 10px !important; /* Reducir sangría */
+    border-left: 2px solid #ccc !important; /* Línea gris fina */
+    padding-left: 15px !important;
+  }
+
+  .timeline-item {
+    margin-bottom: 10px !important;
+  }
+  
+  /* Eliminar los puntos decorativos complejos */
+  .timeline-item::after {
+    display: none !important; 
+  }
+
+  .timeline-item-title {
+    font-size: 11pt !important;
+    font-weight: bold !important;
+    margin-bottom: 2px !important;
+  }
+
+  .timeline-text {
+    font-size: 9.5pt !important;
+    text-align: justify;
+  }
+
+  /* Habilidades (Skills) compactas */
+  .skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 10px;
+    padding: 0 !important;
+  }
+  
+  .skills-item {
+    margin-bottom: 5px !important;
+  }
+
+  .skill-progress-bg {
+    height: 4px !important; /* Barra más fina */
+    background: #eee !important;
+  }
+  
+  .skill-progress-fill {
+    background: #000 !important; /* Barra de progreso negra */
+  }
+
+  /* 6. OCULTAR LO INNECESARIO */
+  .theme-switch-wrapper,
+  .navbar,
+  .info_more-btn,
+  .separator,
+  .service-item::before,
+  .content-card::before,
+  .mapbox,
+  .contact-form,
+  #ytvideo,
+  .filter-list,
+  .modal-container,
+  .overlay {
+    display: none !important;
   }
 }
