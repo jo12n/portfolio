@@ -115,9 +115,18 @@
   --on-primary: #000;
   --on-background: rgba(255, 255, 255, 0.9);
   --on-background-alt: rgba(255, 255, 255, 0.7);
-  --background-body: hsl(0, 0%, 7%);
-  --background-article: hsl(240, 2%, 12%);
-  --background-element: hsl(240, 1%, 17%);
+
+  /* --- CAMBIOS PARA EL FONDO 3D --- */
+  
+  /* 1. Fondo global transparente para ver la animación */
+  --background-body: transparent; 
+  
+  /* 2. Cajas semitransparentes (0.75 de opacidad) */
+  --background-article: hsla(240, 2%, 12%, 0.75);
+  --background-element: hsla(240, 1%, 17%, 0.75);
+  
+  /* -------------------------------- */
+
   --background-icon: var(--border-gradient-onyx);
   --background-icon-before: var(--eerie-black-1);
   --border-color: hsl(0, 0%, 22%);
@@ -2227,4 +2236,37 @@ input:checked + .slider ion-icon{
   article.about, article.resume, article.publications {
     display: block;
   }
+}
+
+/* --- ARREGLO DE BARRA DE SCROLL --- */
+
+/* 1. Forzar que aparezca la barra vertical si el contenido es largo */
+html {
+  overflow-y: scroll; 
+}
+
+/* 2. Asegurar que el body permita scroll */
+body {
+  overflow-y: auto;
+  scrollbar-color: var(--orange-yellow-crayola) var(--onyx); /* Firefox */
+}
+
+/* 3. Estilos específicos para Chrome/Edge/Safari (Webkit) */
+::-webkit-scrollbar {
+  width: 10px; /* Un poco más ancha para verla bien */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1f; /* Gris oscuro (Onyx) manual para asegurar visibilidad */
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola); /* Tu color amarillo/dorado */
+  border-radius: 5px;
+  border: 2px solid #1e1e1f; /* Borde para que destaque */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-gradient-yellow);
 }
