@@ -219,12 +219,15 @@ if (currentTheme) { // if a theme is already set in localStorage
   }
 }
 
-// ----------------------- Generate Page PDF ------------------------
+// ----------------------- Download CV PDF ------------------------
 function generatePDF() {
-  // Uncomment this whenever the page content changes
-  window.print();
-
-  window.open("files/cv/CV_Ignacio_Jolin.pdf", "_blank");
+  // Create a temporary link to download the PDF
+  const link = document.createElement('a');
+  link.href = 'files/cv/CV_Ignacio_Jolin.pdf';
+  link.download = 'CV_Ignacio_Jolin.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // ----------------------- Hero Overlay - Hide on Arrow Click ------------------------
