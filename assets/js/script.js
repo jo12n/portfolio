@@ -148,7 +148,10 @@ for (let i = 0; i < navigationLinks.length; i++) {
       if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
         pages[i].classList.add("active");
         navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
+        const mainWrapper = document.getElementById('main-wrapper');
+        if (mainWrapper) {
+          mainWrapper.scrollIntoView({ behavior: 'smooth' });
+        }
       } else {
         pages[i].classList.remove("active");
         navigationLinks[i].classList.remove("active");
@@ -172,17 +175,17 @@ const DARK_THEME = 'dark';
 const LIGHT_THEME = 'light';
 
 function toggleDarkLightMode(mode) {
-    if (mode == DARK_THEME) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      toggleSwitch.checked = true;
-      toggleIcon.name = "moon";
-    } else if (mode === LIGHT_THEME) {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-      toggleSwitch.checked = false;
-      toggleIcon.name = "sunny";
-    }
+  if (mode == DARK_THEME) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    toggleSwitch.checked = true;
+    toggleIcon.name = "moon";
+  } else if (mode === LIGHT_THEME) {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    toggleSwitch.checked = false;
+    toggleIcon.name = "sunny";
+  }
 }
 
 // Switch Theme Dynamically
@@ -210,9 +213,9 @@ if (currentTheme) { // if a theme is already set in localStorage
 } else { // if no theme is set in localStorage, check system preference
   console.log(`No theme in localStorage, checking system preference...`);
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      toggleDarkLightMode(DARK_THEME);
+    toggleDarkLightMode(DARK_THEME);
   } else {
-      toggleDarkLightMode(LIGHT_THEME);
+    toggleDarkLightMode(LIGHT_THEME);
   }
 }
 
@@ -223,3 +226,18 @@ function generatePDF() {
 
   window.open("files/cv/CV_Ignacio_Jolin.pdf", "_blank");
 }
+
+// ----------------------- Hero Overlay - Hide on Arrow Click ------------------------
+document.addEventListener('DOMContentLoaded', function () {
+  const heroSection = document.getElementById('hero');
+  const scrollArrow = document.querySelector('.scroll-arrow');
+
+  if (heroSection && scrollArrow) {
+    scrollArrow.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      heroSection.classList.add('hidden');
+      document.body.classList.remove('hero-visible');
+    });
+  }
+});

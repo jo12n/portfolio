@@ -25,13 +25,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="hero-visible">
+
+  <!--
+    - #HERO / INTRO SECTION
+  -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-name">Ignacio Jolín Rodrigo</h1>
+      <p class="hero-title">Mathematician</p>
+      <a href="#" class="scroll-arrow" aria-label="Scroll to main content"
+        onclick="document.getElementById('hero').classList.add('hidden'); document.body.classList.remove('hero-visible'); return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!--
+    - #NAVBAR (fixed at top)
+  -->
+
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item">
+        <button class="navbar-link active" data-nav-link>About</button>
+      </li>
+      <li class="navbar-item">
+        <button class="navbar-link" data-nav-link>Resume</button>
+      </li>
+      <li class="navbar-item">
+        <button class="navbar-link" data-nav-link>Publications</button>
+      </li>
+      <li class="navbar-item">
+        <button class="navbar-link" data-nav-link>Projects</button>
+      </li>
+    </ul>
+  </nav>
 
   <!--
     - #MAIN
   -->
 
-  <main>
+  <main id="main-wrapper">
 
     <!--
       - #SIDEBAR
@@ -46,7 +84,7 @@
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Ignacio Jolín Rodrigo" >Ignacio<br>Jolín Rodrigo</h1>
+          <h1 class="name" title="Ignacio Jolín Rodrigo">Ignacio<br>Jolín Rodrigo</h1>
 
           <p class="title">Mathematician</p>
         </div>
@@ -132,7 +170,8 @@
             </a>
           </li>
           <li class="social-item">
-            <a target="_blank" href="https://www.linkedin.com/in/ignacio-jol%C3%ADn-rodrigo-97451a236/" class="social-link">
+            <a target="_blank" href="https://www.linkedin.com/in/ignacio-jol%C3%ADn-rodrigo-97451a236/"
+              class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
@@ -161,33 +200,6 @@
     <div class="main-content">
 
       <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Publications</button>
-          </li>
-          
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Projects</button>
-          </li>
-        </ul>
-
-      </nav>
-
-      <!--
         - #ABOUT
       -->
 
@@ -199,16 +211,21 @@
 
         <section class="about-text">
           <p>
-            I am a Mathematician (BSc & MSc) with a strong passion for Artificial Intelligence Research and Data Science. My academic training has equipped me with advanced analytical and problem-solving skills, which I now apply to machine learning, statistical modeling, and algorithm development.
+            I am a Mathematician (BSc & MSc) with a strong passion for Artificial Intelligence Research and Data
+            Science. My academic training has equipped me with advanced analytical and problem-solving skills, which I
+            now apply to machine learning, statistical modeling, and algorithm development.
           </p>
 
           <p>
-            I excel at transforming abstract mathematical principles into real-world solutions, whether through cutting-edge AI research, scalable data systems, or innovative applications of machine learning. Currently, I'm deeply exploring Large Language Models (LLMs), generative AI, and other emerging frontiers in artificial intelligence.
+            I excel at transforming abstract mathematical principles into real-world solutions, whether through
+            cutting-edge AI research, scalable data systems, or innovative applications of machine learning. Currently,
+            I'm deeply exploring Large Language Models (LLMs), generative AI, and other emerging frontiers in artificial
+            intelligence.
           </p>
         </section>
 
 
-          
+
 
 
         <!--
@@ -385,18 +402,24 @@
             <li class="timeline-item">
               <h4 class="h4">Researcher in the Universidad Alcalá de Henares, Madrid</h4>
               <h4 class="h4 timeline-item-title">Researcher of generative AI applied to health</h4>
-              
+
               <span>September 2025 - Present</span>
 
               <p class="timeline-text">
-                <p class="timeline-text">
-                  - <b>API Integration:</b> Engineered scalable solutions by integrating third-party LLM APIs into production workflows to enhance system capabilities.<br>
-                  - <b>Infrastructure & Deployment:</b> Deployed and optimized open-source LLMs (e.g., Llama, Mistral) on private, on-premise servers, ensuring data sovereignty and reduced latency.<br>
-                  - <b>NLP Evaluation Frameworks:</b> Designed and implemented quantitative metrics and benchmarking protocols to rigorously assess the quality, accuracy, and coherence of LLM-generated summaries.<br>
-                  - <b>Scientific Dissemination:</b> Authored and structured high-impact scientific publications utilizing LaTeX for precise document formatting and technical composition.<br>
-                  - <b>Cross-Disciplinary Collaboration:</b> Partnered with clinical stakeholders in a hospital setting to align technical AI solutions with healthcare requirements and patient data privacy standards.<br>
-                  - <b>Large Language Model (LLM) Optimization:</b> Executed fine-tuning strategies on foundational models to tailor performance for specific domain tasks.
-                </p>
+              <p class="timeline-text">
+                - <b>API Integration:</b> Engineered scalable solutions by integrating third-party LLM APIs into
+                production workflows to enhance system capabilities.<br>
+                - <b>Infrastructure & Deployment:</b> Deployed and optimized open-source LLMs (e.g., Llama, Mistral) on
+                private, on-premise servers, ensuring data sovereignty and reduced latency.<br>
+                - <b>NLP Evaluation Frameworks:</b> Designed and implemented quantitative metrics and benchmarking
+                protocols to rigorously assess the quality, accuracy, and coherence of LLM-generated summaries.<br>
+                - <b>Scientific Dissemination:</b> Authored and structured high-impact scientific publications utilizing
+                LaTeX for precise document formatting and technical composition.<br>
+                - <b>Cross-Disciplinary Collaboration:</b> Partnered with clinical stakeholders in a hospital setting to
+                align technical AI solutions with healthcare requirements and patient data privacy standards.<br>
+                - <b>Large Language Model (LLM) Optimization:</b> Executed fine-tuning strategies on foundational models
+                to tailor performance for specific domain tasks.
+              </p>
 
               </p>
 
@@ -404,15 +427,16 @@
             <li class="timeline-item">
               <h4 class="h4">SW and Technology Department at Renault I+D+i, Valladolid</h4>
               <h4 class="h4 timeline-item-title">Data Science</h4>
-              
+
               <span>September 2024 - June 2025</span>
 
               <p class="timeline-text">
-                <p class="timeline-text">
-                  - <b>Linux:</b> Worked with Linux on Raspberry Pi, implementing communication protocols.<br>
-                  - <b>Data Science:</b> Developed image classification models and built a predictive model for gas consumption forecasting.<br>
-                  - <b>Documentation:</b> Created technical documentation using Jupyter Notebooks and Markdown.
-                </p>
+              <p class="timeline-text">
+                - <b>Linux:</b> Worked with Linux on Raspberry Pi, implementing communication protocols.<br>
+                - <b>Data Science:</b> Developed image classification models and built a predictive model for gas
+                consumption forecasting.<br>
+                - <b>Documentation:</b> Created technical documentation using Jupyter Notebooks and Markdown.
+              </p>
 
               </p>
 
@@ -436,15 +460,18 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Universitat Politècnica de València, Spain</h4>
               <h4 class="h4">Master's Degree in Mathematical Research</h4>
-              
+
               <span>2023 - 2024</span>
 
               <p class="timeline-text">
-                My master's program equipped me with a dual perspective: the rigorous methodology of academic research and the pragmatic mindset of industry applications. 
-                I developed the ability to navigate between theoretical frameworks and real-world problem-solving, 
-                mastering how to adapt abstract concepts into practical solutions. 
-                This experience improved my capacity to work effectively in both environments, whether conducting structured research or delivering 
-                actionable results under technical and time constraints, while maintaining the precision of mathematical thinking at the core of my approach.
+                My master's program equipped me with a dual perspective: the rigorous methodology of academic research
+                and the pragmatic mindset of industry applications.
+                I developed the ability to navigate between theoretical frameworks and real-world problem-solving,
+                mastering how to adapt abstract concepts into practical solutions.
+                This experience improved my capacity to work effectively in both environments, whether conducting
+                structured research or delivering
+                actionable results under technical and time constraints, while maintaining the precision of mathematical
+                thinking at the core of my approach.
               </p>
 
 
@@ -453,13 +480,15 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Universidad de Valladolid, Spain</h4>
               <h4 class="h4">Bachelor's Degree in Mathematics</h4>
-              
+
               <span>2019 - 2023</span>
 
               <p class="timeline-text">
-                I mastered the foundational principles of diverse mathematical fields, from pure to applied disciplines. 
-                Beyond technical knowledge, this rigorous training honed my ability to think in abstract terms, construct logical frameworks, 
-                and solve complex problems with structured creativity. These core skills now serve as my toolkit for tackling challenges in AI research and data science, 
+                I mastered the foundational principles of diverse mathematical fields, from pure to applied disciplines.
+                Beyond technical knowledge, this rigorous training honed my ability to think in abstract terms,
+                construct logical frameworks,
+                and solve complex problems with structured creativity. These core skills now serve as my toolkit for
+                tackling challenges in AI research and data science,
                 where deep mathematical reasoning meets real-world impact.
               </p>
 
@@ -469,12 +498,14 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Erasmus Exchange Program at the Universidade de Coimbra, Portugal</h4>
               <h4 class="h4">Bachelor's Degree in Mathematics</h4>
-              
+
               <span>2021 - 2022</span>
 
               <p class="timeline-text">
-                This marked my first experience living far from home, where I embraced the challenge of adapting to a new cultural environment. 
-                I learned to collaborate with people from diverse backgrounds, explored fascinating academic topics beyond my usual scope, 
+                This marked my first experience living far from home, where I embraced the challenge of adapting to a
+                new cultural environment.
+                I learned to collaborate with people from diverse backgrounds, explored fascinating academic topics
+                beyond my usual scope,
                 and grew by stepping far outside my comfort zone.
               </p>
 
@@ -506,7 +537,7 @@
             </li>
 
             <li class="timeline-item">
-             <h4 class="h4">Chinese</h4>
+              <h4 class="h4">Chinese</h4>
               <p class="timeline-text">Attending a HSK2 course level</p>
             </li>
 
@@ -532,17 +563,21 @@
 
             <li class="timeline-item">
               <h4 class="h4">Coding</h4>
-              <p class="timeline-text">RStudio, MATLAB, Mathrmatica, C, Bash, Python (Threading, Multiprocessing, Pillow, Keras, TensorFlow, PyTorch, Numpy)</p>
+              <p class="timeline-text">RStudio, MATLAB, Mathrmatica, C, Bash, Python (Threading, Multiprocessing,
+                Pillow, Keras, TensorFlow, PyTorch, Numpy)</p>
             </li>
 
             <li class="timeline-item">
               <h4 class="h4">Mathematics</h4>
-              <p class="timeline-text">Topology, Optimization, Functional Analysis, Algebra, Mathematical Modelling, Stadistics, Cryptography</p>
+              <p class="timeline-text">Topology, Optimization, Functional Analysis, Algebra, Mathematical Modelling,
+                Stadistics, Cryptography</p>
             </li>
 
             <li class="timeline-item">
               <h4 class="h4">Machine learning</h4>
-              <p class="timeline-text">With a strong theoretical background: Artificial neural networks, DImension reduciton, Random forest, Convolutional neural networks, Support vector machine, Large Languages Models</p>
+              <p class="timeline-text">With a strong theoretical background: Artificial neural networks, DImension
+                reduciton, Random forest, Convolutional neural networks, Support vector machine, Large Languages Models
+              </p>
             </li>
 
             <li class="timeline-item">
@@ -568,7 +603,7 @@
 
         </section>
 
-                <section class="timeline">
+        <section class="timeline">
 
           <div class="title-wrapper">
             <div class="icon-box">
@@ -620,8 +655,11 @@
             <ol class="timeline-list">
 
               <li class="timeline-item">
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://doi.org/10.36227/techrxiv.174494666.69176037/v1">Time series analysis with persistence landscapes: A novel model for alzheimer detection</a> 
-                <span>Preprint, Accessed: 2024-07-15. DOI: 10.36227/techrxiv.174494666.69176037/v1, Valladolid, Spain</span>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://doi.org/10.36227/techrxiv.174494666.69176037/v1">Time series analysis with persistence
+                  landscapes: A novel model for alzheimer detection</a>
+                <span>Preprint, Accessed: 2024-07-15. DOI: 10.36227/techrxiv.174494666.69176037/v1, Valladolid,
+                  Spain</span>
 
                 <p class="timeline-text">
                   <b class="highlight-author">Ignacio Jolín</b>
@@ -634,7 +672,9 @@
             <ol class="timeline-list">
 
               <li class="timeline-item">
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://riunet.upv.es/handle/10251/210927">Master's Thesis: Clasificación de series temporales empleando análisis topológico de datos</a>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://riunet.upv.es/handle/10251/210927">Master's Thesis: Clasificación de series temporales
+                  empleando análisis topológico de datos</a>
                 <span>Valencia, Spain</span>
 
                 <p class="timeline-text">
@@ -644,8 +684,10 @@
               </li>
 
               <li class="timeline-item">
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://imm.webs.upv.es/invesmat/2024_Investmat.pdf">Introduction to knot theory</a>
-                <span>XI Congreso del Máster en Investigación Matemática y Doctorado en Matemáticas, Universitat de València, Spain</span>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://imm.webs.upv.es/invesmat/2024_Investmat.pdf">Introduction to knot theory</a>
+                <span>XI Congreso del Máster en Investigación Matemática y Doctorado en Matemáticas, Universitat de
+                  València, Spain</span>
 
                 <p class="timeline-text">
                   David Campos-Abad, <b class="highlight-author">Ignacio Jolin-Rodrigo</b>, Clara Soler-Signes
@@ -658,7 +700,9 @@
             <ol class="timeline-list">
 
               <li class="timeline-item">
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://uvadoc.uva.es/handle/10324/63202">Bachelor's Thesis: Lema de Sperner y topología simplicial</a>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://uvadoc.uva.es/handle/10324/63202">Bachelor's Thesis: Lema de Sperner y topología
+                  simplicial</a>
                 <span>Valladolid, Spain</span>
 
                 <p class="timeline-text">
@@ -685,26 +729,32 @@
 
               <li class="timeline-item">
                 <a class="h5 pub-link timeline-item-title">GPT form scratch</a>
-                <p class="timeline-text">In this repository, I explain most of the mathematical concepts from a GPT model, explaining how the transformers and other concepts works</p>
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://github.com/jo12n/GPT_from_scratch"><code>Git: GPT_from_scratch</code></a>
+                <p class="timeline-text">In this repository, I explain most of the mathematical concepts from a GPT
+                  model, explaining how the transformers and other concepts works</p>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://github.com/jo12n/GPT_from_scratch"><code>Git: GPT_from_scratch</code></a>
               </li>
 
               <li class="timeline-item">
                 <a class="h5 pub-link timeline-item-title">Reinforcement learning agent</a>
-                <p class="timeline-text">A DQN agent that navigates a square toward a target circle on the screen avoiding obstacles</p>
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://github.com/jo12n/reinforcement_learning"><code>Git: reinforcement-learning</code></a>
+                <p class="timeline-text">A DQN agent that navigates a square toward a target circle on the screen
+                  avoiding obstacles</p>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://github.com/jo12n/reinforcement_learning"><code>Git: reinforcement-learning</code></a>
               </li>
 
               <li class="timeline-item">
                 <a class="h5 pub-link timeline-item-title">Dimension reduction theory</a>
                 <p class="timeline-text">Jupiter file with the theory of the main dimension reduction algorithms</p>
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://github.com/jo12n/dimension_reduction_theory.git"><code>Git: dimension-reduction-theory</code></a>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://github.com/jo12n/dimension_reduction_theory.git"><code>Git: dimension-reduction-theory</code></a>
               </li>
 
               <li class="timeline-item">
                 <a class="h5 pub-link timeline-item-title">Data science tips</a>
                 <p class="timeline-text">Jupiter file with some tips for data science and practical examples</p>
-                <a class="h5 pub-link timeline-item-title" target="_blank" href="https://github.com/jo12n/data_science_tips.git"><code>Git: data-science-tips</code></a>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://github.com/jo12n/data_science_tips.git"><code>Git: data-science-tips</code></a>
               </li>
             </ol>
 
@@ -732,7 +782,7 @@
     - pdf generator link
   -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  
+
   <script src="fondo3d.js"></script>
 
 </body>
