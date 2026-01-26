@@ -139,24 +139,60 @@ for (let i = 0; i < formInputs.length; i++) {
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const pageOrder = ['about', 'resume', 'publications', 'projects'];
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const targetPage = this.innerHTML.toLowerCase();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        const mainWrapper = document.getElementById('main-wrapper');
-        if (mainWrapper) {
-          mainWrapper.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+    // Find current active page and its index
+    let currentPage = null;
+    let currentIndex = -1;
+    let targetIndex = pageOrder.indexOf(targetPage);
+    let targetPageElement = null;
+
+    for (let j = 0; j < pages.length; j++) {
+      if (pages[j].classList.contains("active")) {
+        currentPage = pages[j];
+        currentIndex = pageOrder.indexOf(pages[j].dataset.page);
+      }
+      if (pages[j].dataset.page === targetPage) {
+        targetPageElement = pages[j];
       }
     }
+
+    // Don't do anything if clicking on the same section
+    if (currentPage && currentPage.dataset.page === targetPage) {
+      return;
+    }
+
+    // Update navigation buttons immediately
+    for (let j = 0; j < navigationLinks.length; j++) {
+      if (navigationLinks[j].innerHTML.toLowerCase() === targetPage) {
+        navigationLinks[j].classList.add("active");
+      } else {
+        navigationLinks[j].classList.remove("active");
+      }
+    }
+
+    // Step 1: Hide current section immediately
+    if (currentPage) {
+      currentPage.classList.remove("active");
+    }
+
+    // Step 2: Scroll to top instantly
+    const mainWrapper = document.getElementById('main-wrapper');
+    if (mainWrapper) {
+      mainWrapper.scrollIntoView({ behavior: 'instant' });
+    }
+
+    // Step 3: Show new section (small delay to ensure scroll completes)
+    setTimeout(() => {
+      if (targetPageElement) {
+        targetPageElement.classList.add("active");
+      }
+    }, 50);
 
   });
 }
@@ -221,7 +257,12 @@ if (currentTheme) { // if a theme is already set in localStorage
 
 // ----------------------- Download CV PDF ------------------------
 function generatePDF() {
-  window.print();
+  const link = document.createElement('a');
+  link.href = 'files/cv/CV_Ignacio_Jolin_Rodrigo.pdf';
+  link.download = 'CV_Ignacio_Jolin_Rodrigo.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // ----------------------- Hero Overlay - Hide on Arrow Click ------------------------

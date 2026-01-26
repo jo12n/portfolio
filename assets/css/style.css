@@ -245,20 +245,57 @@ article {
 
 article {
   display: none;
+  position: relative;
 }
 
 article.active {
   display: block;
-  animation: fade 0.5s ease backwards;
+  animation: slideIn 0.4s ease-out forwards;
 }
 
-@keyframes fade {
+article.slide-out-left {
+  display: block;
+  animation: slideOutLeft 0.4s ease-out forwards;
+}
+
+article.slide-out-right {
+  display: block;
+  animation: slideOutRight 0.4s ease-out forwards;
+}
+
+@keyframes slideIn {
   0% {
     opacity: 0;
+    transform: translateX(50px);
   }
 
   100% {
     opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(50px);
   }
 }
 
