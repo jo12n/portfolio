@@ -1,0 +1,11 @@
+{
+    "name": "portfolio-cv-generator",
+    "version": "1.0.0",
+    "description": "Script to generate CV PDF from portfolio",
+    "scripts": {
+        "generate-cv": "node generate-cv.js"
+    },
+    "dependencies": {
+        "puppeteer": "^21.0.0"
+    }
+}

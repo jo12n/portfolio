@@ -1,0 +1,38 @@
+name: Generate CV PDF
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - '!files/cv/**'
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Generate CV PDF
+        run: npm run generate-cv
+      
+      - name: Commit and push PDF
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add files/cv/CV_Ignacio_Jolin_Rodrigo.pdf
+          git diff --staged --quiet || git commit -m "📄 Auto-update CV PDF"
+          git push
