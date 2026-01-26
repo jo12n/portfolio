@@ -219,43 +219,9 @@ if (currentTheme) { // if a theme is already set in localStorage
   }
 }
 
-// ----------------------- Generate Page PDF ------------------------
+// ----------------------- Download CV PDF ------------------------
 function generatePDF() {
-  // Check if html2pdf is available
-  if (typeof html2pdf === 'undefined') {
-    // Fallback to window.print if html2pdf is not loaded
-    window.print();
-    return;
-  }
-
-  // Hide hero section temporarily for PDF generation
-  const hero = document.getElementById('hero');
-  const navbar = document.querySelector('.navbar');
-  const originalHeroDisplay = hero ? hero.style.display : '';
-  const originalNavbarDisplay = navbar ? navbar.style.display : '';
-
-  if (hero) hero.style.display = 'none';
-  if (navbar) navbar.style.display = 'none';
-
-  const element = document.getElementById('main-wrapper');
-  const opt = {
-    margin: 5,
-    filename: 'CV_Ignacio_Jolin_Rodrigo.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, logging: false },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().set(opt).from(element).save().then(function () {
-    if (hero) hero.style.display = originalHeroDisplay;
-    if (navbar) navbar.style.display = originalNavbarDisplay;
-  }).catch(function (error) {
-    console.error('PDF generation error:', error);
-    if (hero) hero.style.display = originalHeroDisplay;
-    if (navbar) navbar.style.display = originalNavbarDisplay;
-    // Fallback to window.print on error
-    window.print();
-  });
+  window.print();
 }
 
 // ----------------------- Hero Overlay - Hide on Arrow Click ------------------------

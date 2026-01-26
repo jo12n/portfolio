@@ -395,6 +395,28 @@ body.hero-visible main {
   gap: 15px;
 }
 
+/* QR Code - hidden on screen, shown only when printing */
+#cv-qrcode {
+  display: none;
+  margin-left: auto;
+  padding: 5px;
+  background: white;
+  border-radius: 8px;
+}
+
+#cv-qrcode img {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+/* Show QR only when printing/generating PDF */
+@media print {
+  #cv-qrcode {
+    display: block !important;
+  }
+}
+
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
