@@ -36,8 +36,9 @@ async function generateCV() {
         // Wait for content to load
         await page.waitForSelector('.sidebar', { timeout: 10000 });
 
-        // Hide hero section and navbar for PDF
+        // Hide hero section and navbar for PDF, and remove hero-visible
         await page.evaluate(() => {
+            document.body.classList.remove('hero-visible');
             const hero = document.getElementById('hero');
             const navbar = document.querySelector('.navbar');
             if (hero) hero.style.display = 'none';

@@ -1801,6 +1801,7 @@ input:checked+.slider ion-icon {
   }
 
   /* OCULTAR ELEMENTOS INNECESARIOS */
+  #hero,
   .navbar,
   .theme-switch-wrapper,
   .info_more-btn,
@@ -1811,6 +1812,15 @@ input:checked+.slider ion-icon {
   .filter-list,
   #ytvideo {
     display: none !important;
+  }
+
+  body.hero-visible {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  body.hero-visible main {
+    transform: none !important;
   }
 }
 
