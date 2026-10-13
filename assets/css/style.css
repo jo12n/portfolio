@@ -405,6 +405,10 @@ body.hero-visible {
 }
 
 body.hero-visible main {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   transform: translate3d(0, 100vh, 0);
   opacity: 1 !important;
   visibility: visible !important;

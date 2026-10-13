@@ -277,6 +277,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!heroSection || !mainWrapper) return;
 
+  // Ensure scroll is at the very top and browser doesn't restore scroll on reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
+  // Guard against any scroll attempts while hero is visible
+  window.addEventListener('scroll', function () {
+    if (document.body.classList.contains('hero-visible')) {
+      if (window.scrollY !== 0) {
+        window.scrollTo(0, 0);
+      }
+    }
+  });
+
   let isDragging = false;
   let hasMoved = false;
   let isTransitioning = false;
@@ -366,6 +381,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       isTransitioning = false;
       dragY = 0;
+
+      // Start portfolio scroll cleanly at top
+      window.scrollTo(0, 0);
 
       // Notify Three.js and layout observers
       window.dispatchEvent(new Event('scroll'));
