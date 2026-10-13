@@ -398,12 +398,20 @@ main {
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Hide main content when hero is visible */
-body.hero-visible main {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+/* Hide and offset main content below viewport when hero is visible */
+body.hero-visible {
+  overflow: hidden !important;
+  height: 100vh !important;
 }
+
+body.hero-visible main {
+  transform: translate3d(0, 100vh, 0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  transition: none;
+}
+
 
 
 
@@ -612,12 +620,15 @@ body.hero-visible main {
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Hide navbar when hero is visible */
+/* Hide and slide navbar out of view when hero is visible */
 body.hero-visible .navbar {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translate3d(0, -100%, 0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 
 .navbar-list {
   display: flex;
@@ -1811,7 +1822,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hero as a full-screen overlay - using !important to ensure these styles apply */
+/* Hero as a full-screen overlay */
 .hero-section {
   position: fixed !important;
   top: 0 !important;
@@ -1830,12 +1841,22 @@ html {
   pointer-events: auto;
   margin: 0 !important;
   padding: 0 !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  cursor: grab;
+  will-change: transform, opacity;
+}
+
+.hero-section.is-dragging {
+  cursor: grabbing !important;
 }
 
 .hero-section.hidden {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  display: none !important;
 }
 
 .hero-content {
@@ -1847,6 +1868,11 @@ html {
   z-index: 2;
   width: 100%;
   max-width: 90vw;
+  pointer-events: none;
+}
+
+.hero-content * {
+  pointer-events: auto;
 }
 
 .hero-name {
@@ -1858,6 +1884,7 @@ html {
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   text-align: center !important;
   width: 100% !important;
+  user-select: none;
 }
 
 .hero-title {
@@ -1867,51 +1894,100 @@ html {
   letter-spacing: 4px !important;
   text-transform: uppercase !important;
   text-align: center !important;
+  user-select: none;
+}
+
+/* Modern interactive drag & click control */
+.hero-drag-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 36px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 200;
+  padding: 12px 28px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  animation: bounceUp 2.4s ease-in-out infinite;
+}
+
+.hero-drag-control:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.hero-section.is-dragging .hero-drag-control {
+  animation: none !important;
+}
+
+.drag-handle-bar {
+  width: 38px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+
+.hero-drag-control:hover .drag-handle-bar {
+  background: rgba(255, 255, 255, 0.85);
+  width: 48px;
 }
 
 .scroll-arrow {
-  display: block !important;
-  margin-top: 40px !important;
-  width: 40px !important;
-  height: 40px !important;
-  max-width: 40px !important;
-  max-height: 40px !important;
-  color: rgba(255, 255, 255, 0.4) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 26px !important;
+  height: 26px !important;
+  max-width: 26px !important;
+  max-height: 26px !important;
+  color: rgba(255, 255, 255, 0.6) !important;
   cursor: pointer !important;
-  transition: color var(--transition-1), transform var(--transition-1);
-  animation: bounce 2s infinite;
-  z-index: 200;
-  position: relative;
-  pointer-events: auto !important;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin: 0 !important;
+  animation: none !important;
 }
 
-.scroll-arrow:hover {
-  color: rgba(255, 255, 255, 0.7) !important;
-  transform: scale(1.1);
+.hero-drag-control:hover .scroll-arrow {
+  color: #fff !important;
+  transform: translateY(-2px);
 }
 
 .scroll-arrow svg {
   width: 100% !important;
   height: 100% !important;
-  max-width: 40px !important;
-  max-height: 40px !important;
 }
 
-@keyframes bounce {
+.drag-hint {
+  font-size: 11px;
+  font-weight: var(--fw-300);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+  transition: color 0.3s ease;
+  user-select: none;
+}
 
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
+.hero-drag-control:hover .drag-hint {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes bounceUp {
+  0%, 100% {
     transform: translateY(0);
   }
-
-  40% {
-    transform: translateY(-10px);
+  50% {
+    transform: translateY(-9px);
   }
-
-  60% {
-    transform: translateY(-5px);
-  }
-}
+}

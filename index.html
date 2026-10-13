@@ -34,13 +34,15 @@
     <div class="hero-content">
       <h1 class="hero-name">Ignacio Jolín Rodrigo</h1>
       <p class="hero-title">Mathematician</p>
-      <a href="#" class="scroll-arrow" aria-label="Scroll to main content"
-        onclick="document.getElementById('hero').classList.add('hidden'); document.body.classList.remove('hero-visible'); return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </a>
+      <div class="hero-drag-control" role="button" tabindex="0" aria-label="Slide up to see the content">
+        <div class="drag-handle-bar"></div>
+        <a href="#" class="scroll-arrow" aria-label="Slide up or click to see the content" onclick="return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -408,7 +410,7 @@
               <h4 class="h4">Researcher in the Universidad Alcalá de Henares, Madrid</h4>
               <h4 class="h4 timeline-item-title">Researcher of generative AI applied to health</h4>
 
-              <span>September 2025 - Present</span>
+              <span>September 2025 - September 2026</span>
 
               <p class="timeline-text">
               <p class="timeline-text">
@@ -543,7 +545,7 @@
 
             <li class="timeline-item">
               <h4 class="h4">Chinese</h4>
-              <p class="timeline-text">Attending a HSK2 course level</p>
+              <p class="timeline-text">Certified with HSK2</p>
             </li>
 
             <li class="timeline-item">
@@ -655,6 +657,25 @@
 
           <section class="timeline">
 
+            <h4 class="h4 timeline-year">2026</h4>
+
+            <ol class="timeline-list">
+
+              <li class="timeline-item">
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://www.researchsquare.com/article/rs-10166213/v1">Evaluating LLMs for HIV Epidemiological
+                  Surveillance in Spanish: Clinical Summarization, Risk Factor Extraction, and Inference Stability
+                  across Models.</a>
+                <span>Preprint under review, Research Square, DOI:10.21203/rs.3.rs-10166213/v1 (accessed 2026-09-04),
+                  Universidad de Alcalá de Henares, Spain.</span>
+
+                <p class="timeline-text">
+                  <b class="highlight-author">Ignacio Jolín, Ana Carrero-Fernández, Juan Cuadros-González and Maria
+                    D.R-Moreno<b>
+                </p>
+              </li>
+            </ol>
+
             <h4 class="h4 timeline-year">2025</h4>
 
             <ol class="timeline-list">
@@ -731,6 +752,14 @@
 
           <section class="timeline">
             <ol class="timeline-list">
+
+              <li class="timeline-item">
+                <a class="h5 pub-link timeline-item-title"> Multiparameter Persistence in Medical Imaging</a>
+                <p class="timeline-text">Implementation of 2D cubical bifiltrations via distance transforms (SEDT),
+                  admissible 1D slicing, and Bubenik landscapes with GUDHI on RetinaMNIST.</p>
+                <a class="h5 pub-link timeline-item-title" target="_blank"
+                  href="https://github.com/jo12n/multiparameter_persistence"><code>Git: multiparameter_persistence</code></a>
+              </li>
 
               <li class="timeline-item">
                 <a class="h5 pub-link timeline-item-title">GPT from scratch</a>
